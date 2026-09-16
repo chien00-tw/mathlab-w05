@@ -25,7 +25,7 @@
         }
         
         .game-card-btn {
-            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
         .game-card-btn:active {
@@ -38,16 +38,25 @@
 
         @keyframes pulse-border-anim {
             0%, 100% { border-color: rgba(239, 68, 68, 0.8); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-            50% { border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            50% { border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
         }
 
         .animate-bounce-once {
-            animation: bounce-once 0.5s ease-out;
+            animation: bounce-once 0.45s ease-out;
         }
 
         @keyframes bounce-once {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .timer-warning {
+            animation: timer-pulse 1s infinite alternate;
+        }
+
+        @keyframes timer-pulse {
+            from { color: #ef4444; transform: scale(1); }
+            to { color: #b91c1c; transform: scale(1.05); }
         }
 
         /* Custom scrollbar for iPad and tablets */
@@ -78,7 +87,7 @@
                     <span>因數大對決</span>
                 </div>
                 <span class="bg-indigo-800/80 text-amber-300 text-sm md:text-base px-3 py-1 rounded-xl border border-indigo-600/70 font-mono font-bold shadow-sm">
-                    v1.3.0
+                    v1.5.0
                 </span>
             </div>
 
@@ -130,12 +139,12 @@
 
         <!-- ACTIVITY 1: 課程導入 -->
         <section id="act1-view" class="tab-content space-y-6">
-            <!-- Hero Banner (Cleaned: Deleted "數感特訓任務 #05" and "因數大對決：概念複習與團隊約定") -->
+            <!-- Hero Banner (Cleaned: Deleted "啟動互助精神") -->
             <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-800 text-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-indigo-400/30">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="space-y-2 text-center md:text-left">
                         <p class="text-white text-2xl md:text-4xl font-black tracking-wide leading-relaxed max-w-2xl">
-                            掌握因數概念，啟動互助精神！<br class="hidden sm:inline">準備好進入撲克牌因數接龍競技場了嗎？
+                            掌握因數概念與整除本質！<br class="hidden sm:inline">準備好進入 3 分鐘限時因數接龍競技場了嗎？
                         </p>
                     </div>
                     <div class="bg-white/10 p-6 rounded-3xl backdrop-blur-md border border-white/20 text-center min-w-[240px] shrink-0">
@@ -178,28 +187,28 @@
                     </div>
                 </div>
 
-                <!-- Right: Solitaire Rules & Team Consensus -->
+                <!-- Right: Solitaire Rules & Team Consensus (Updated Rules: 3 min timer & 3 mistakes) -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border border-slate-200 flex flex-col justify-between space-y-6">
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-handshake-angle"></i>
+                                <i class="fa-solid fa-stopwatch"></i>
                             </div>
-                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">競賽規則與公平宣言</h2>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">競賽規則與挑戰限制</h2>
                         </div>
 
                         <ul class="space-y-3 text-slate-700 text-lg md:text-xl">
-                            <li class="flex items-start gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                            <li class="flex items-start gap-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                                 <span class="bg-indigo-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-base font-bold shrink-0 mt-0.5">1</span>
-                                <span><strong>快速接龍：</strong> 中央翻開目標數，迅速打出該數的有效因數。</span>
+                                <span><strong>快速接龍：</strong> 中央翻開目標數，小組需迅速打出該數的有效因數進行累分。</span>
                             </li>
-                            <li class="flex items-start gap-3 bg-amber-50 p-3 rounded-2xl border border-amber-100">
+                            <li class="flex items-start gap-3 bg-amber-50 p-3.5 rounded-2xl border border-amber-100">
                                 <span class="bg-amber-500 text-white w-7 h-7 rounded-full flex items-center justify-center text-base font-bold shrink-0 mt-0.5">2</span>
-                                <span><strong>限制條件：</strong> 目標數為大數字（≥20）時，禁止使用「1」或「本身」接龍！</span>
+                                <span><strong>限制條件：</strong> 當目標數為大數字（≥20）時，禁止打出「1」或「本身」接龍！</span>
                             </li>
-                            <li class="flex items-start gap-3 bg-emerald-50 p-3 rounded-2xl border border-emerald-100">
-                                <span class="bg-emerald-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-base font-bold shrink-0 mt-0.5">3</span>
-                                <span><strong>互助暫停：</strong> 若組員連續 3 輪無法出牌，啟動小組暫停與優勢玩家給予口頭線索提示！</span>
+                            <li class="flex items-start gap-3 bg-rose-50 p-3.5 rounded-2xl border border-rose-200">
+                                <span class="bg-rose-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-base font-bold shrink-0 mt-0.5">3</span>
+                                <span><strong>時限與失誤限制：</strong> 挑戰時間設定為 <strong>3 分鐘</strong>，手牌選擇錯誤達 <strong>3 次</strong> 即刻終止遊戲！</span>
                             </li>
                         </ul>
                     </div>
@@ -209,7 +218,7 @@
                         <div class="flex items-center space-x-3">
                             <input type="checkbox" id="consensusCheck" onchange="toggleConsensus()" class="w-7 h-7 rounded-lg text-amber-400 focus:ring-amber-400 bg-indigo-800 border-indigo-600 cursor-pointer">
                             <label for="consensusCheck" class="text-lg md:text-xl font-bold cursor-pointer select-none">
-                                全組已完成規則確認與公平競賽承諾
+                                全組已完成規則確認，準備迎接 3 分鐘挑戰
                             </label>
                         </div>
                         <span id="consensusBadge" class="hidden bg-emerald-500 text-white text-sm font-bold px-3 py-1 rounded-full">已就緒</span>
@@ -232,29 +241,44 @@
             <!-- Game Arena Card -->
             <div class="bg-white rounded-3xl p-4 md:p-8 card-shadow border border-slate-200 space-y-6">
                 
-                <!-- Arena Top Bar: Group Name, Score, Round Stats -->
+                <!-- Arena Top Bar: Group Name, Timer, Mistakes (Hearts), Score -->
                 <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900 text-white p-4 md:p-6 rounded-2xl shadow-inner">
                     <div class="flex items-center space-x-3">
                         <span class="text-amber-400 text-3xl"><i class="fa-solid fa-users-viewfinder"></i></span>
                         <div>
                             <span class="text-slate-400 text-xs md:text-sm block">探究小組</span>
-                            <input type="text" id="groupNameInput" placeholder="請輸入組別（例：第 3 組）" oninput="syncGroupName(this.value)" class="bg-slate-800 text-amber-300 text-xl md:text-2xl font-bold px-3 py-1.5 rounded-xl border border-slate-700 focus:outline-none focus:border-amber-400 w-48 md:w-60">
+                            <input type="text" id="groupNameInput" placeholder="請輸入組別（例：第 3 組）" oninput="syncGroupName(this.value)" class="bg-slate-800 text-amber-300 text-xl md:text-2xl font-bold px-3 py-1.5 rounded-xl border border-slate-700 focus:outline-none focus:border-amber-400 w-44 md:w-56">
                         </div>
                     </div>
 
-                    <!-- Round Stats -->
-                    <div class="flex items-center space-x-6">
+                    <!-- Live Arena Stats: 3-Min Timer & 3 Mistakes Counter -->
+                    <div class="flex flex-wrap items-center gap-4 md:gap-8">
+                        <!-- 3-Minute Countdown Timer -->
+                        <div class="text-center bg-slate-800 px-4 py-2 rounded-2xl border border-slate-700">
+                            <span class="text-slate-400 text-xs md:text-sm block flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-clock"></i> 挑戰倒數
+                            </span>
+                            <span id="arenaTimerDisplay" class="text-3xl md:text-4xl font-mono font-black text-amber-400">03:00</span>
+                        </div>
+
+                        <!-- 3 Mistakes Strikes Counter (Hearts) -->
+                        <div class="text-center bg-slate-800 px-4 py-2 rounded-2xl border border-slate-700">
+                            <span class="text-slate-400 text-xs md:text-sm block">失誤次數 (上限 3 次)</span>
+                            <div id="arenaMistakesContainer" class="flex items-center justify-center gap-1.5 text-2xl md:text-3xl mt-0.5">
+                                <i id="mistake-heart-1" class="fa-solid fa-heart text-emerald-400"></i>
+                                <i id="mistake-heart-2" class="fa-solid fa-heart text-emerald-400"></i>
+                                <i id="mistake-heart-3" class="fa-solid fa-heart text-emerald-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- Round Score & Cleared Counts -->
                         <div class="text-center">
                             <span class="text-slate-400 text-xs md:text-sm block">回合積分</span>
                             <span id="arenaScore" class="text-3xl md:text-4xl font-black text-amber-400">0</span>
                         </div>
                         <div class="text-center">
-                            <span class="text-slate-400 text-xs md:text-sm block">成功接龍</span>
+                            <span class="text-slate-400 text-xs md:text-sm block">成功出牌</span>
                             <span id="arenaSuccessCount" class="text-3xl md:text-4xl font-black text-emerald-400">0</span>
-                        </div>
-                        <div class="text-center">
-                            <span class="text-slate-400 text-xs md:text-sm block">互助暫停次數</span>
-                            <span id="arenaMutualHelpCount" class="text-3xl md:text-4xl font-black text-sky-400">0</span>
                         </div>
                     </div>
                 </div>
@@ -262,16 +286,17 @@
                 <!-- CENTER GAME BOARD AREA -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
                     
-                    <!-- Left Column: Controls & Target Generator -->
+                    <!-- Left Column: Controls & Game Lifecycle (Reset/Next) -->
                     <div class="bg-indigo-50/80 rounded-3xl p-6 border border-indigo-100 flex flex-col justify-between space-y-4">
                         <div>
                             <h3 class="text-xl md:text-2xl font-bold text-indigo-900 mb-2 flex items-center gap-2">
                                 <i class="fa-solid fa-sliders text-indigo-600"></i>
-                                <span>發牌控制台</span>
+                                <span>競技控制台</span>
                             </h3>
-                            <p class="text-slate-600 text-base mb-4">點擊「翻下一張目標牌」隨機翻開目標數，並測試手牌！</p>
+                            <p class="text-slate-600 text-base mb-4">點擊下方按鈕啟動或切換目標數，注意 3 分鐘時限！</p>
                             
-                            <button onclick="drawNewTargetCard()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black text-2xl py-5 rounded-2xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-3">
+                            <!-- Main Draw / Next Target Button -->
+                            <button id="btnNextTarget" onclick="drawNewTargetCard()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xl md:text-2xl py-4 rounded-2xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-3">
                                 <i class="fa-solid fa-arrows-rotate"></i>
                                 <span>翻下一張目標牌</span>
                             </button>
@@ -286,10 +311,10 @@
                             <p id="restrictionNoticeText" class="text-slate-700 font-medium text-base">一般狀態：允許使用 1 與本身接龍。</p>
                         </div>
 
-                        <!-- Manual Mutual Support Trigger Button -->
-                        <button onclick="triggerMutualSupportPause()" class="w-full bg-amber-500 hover:bg-amber-600 text-indigo-950 font-black text-xl py-4 rounded-2xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-hand-holding-hand text-2xl"></i>
-                            <span>連續卡牌？啟動「互助暫停」</span>
+                        <!-- Restart 3-Min Solitaire Challenge Button -->
+                        <button onclick="restartSolitaireGame()" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-lg py-3 rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-rotate-left"></i>
+                            <span>重新開始 3 分鐘挑戰</span>
                         </button>
                     </div>
 
@@ -316,7 +341,7 @@
                         </div>
                     </div>
 
-                    <!-- Right Column: Played Factor Slots & Pairs -->
+                    <!-- Right Column: Played Factor Slots & Progress -->
                     <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 flex flex-col justify-between">
                         <div>
                             <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-2 flex items-center gap-2">
@@ -343,7 +368,7 @@
                     <div class="flex flex-col md:flex-row items-center justify-between gap-2">
                         <div class="flex items-center space-x-2">
                             <i class="fa-solid fa-hand text-amber-400 text-2xl"></i>
-                            <h3 class="text-2xl font-bold">學生手牌選擇區（點擊手牌打出）</h3>
+                            <h3 class="text-2xl font-bold">手牌選擇區（點擊出牌，失誤達 3 次即終止遊戲）</h3>
                         </div>
                         <span class="text-indigo-200 text-base">超大觸控按鈕，專為 iPad 觸控操作體驗打造</span>
                     </div>
@@ -361,7 +386,7 @@
                         <span>即時對決動態紀錄</span>
                     </h4>
                     <div id="arenaMatchLog" class="h-24 overflow-y-auto text-base text-slate-600 space-y-1 font-mono bg-white p-3 rounded-xl border border-slate-200">
-                        <p class="text-slate-400">【系統】對決競技場準備就緒，請填寫組別並翻開目標牌。</p>
+                        <p class="text-slate-400">【系統】對決競技場準備就緒，請填寫組別並翻開目標牌開始 3 分鐘挑戰。</p>
                     </div>
                 </div>
 
@@ -372,7 +397,7 @@
         <section id="act3-view" class="tab-content hidden space-y-6">
             <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border border-slate-200 space-y-8">
                 
-                <!-- Section Header -->
+                <!-- Section Header with Bi-directional Group Sync -->
                 <div class="border-b border-slate-200 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <span class="bg-indigo-100 text-indigo-800 font-bold text-sm px-3 py-1 rounded-full">
@@ -386,9 +411,15 @@
                         </p>
                     </div>
 
-                    <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200 text-right">
-                        <span class="text-slate-500 text-xs font-bold block">填答狀態</span>
-                        <span id="oridFormStatus" class="text-amber-600 text-xl font-bold">尚未送出</span>
+                    <div class="flex flex-wrap items-center gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <div>
+                            <span class="text-slate-500 text-xs font-bold block">探究組別</span>
+                            <input type="text" id="oridGroupNameInput" placeholder="請輸入組別（例：第 3 組）" oninput="syncGroupName(this.value)" class="bg-white text-indigo-950 font-bold text-lg px-3 py-1.5 rounded-xl border border-slate-300 focus:outline-none focus:border-indigo-600 w-44">
+                        </div>
+                        <div class="text-right border-l pl-3 border-slate-200">
+                            <span class="text-slate-500 text-xs font-bold block">填答狀態</span>
+                            <span id="oridFormStatus" class="text-amber-600 text-xl font-bold">尚未送出</span>
+                        </div>
                     </div>
                 </div>
 
@@ -414,7 +445,7 @@
                             <h3 class="text-xl md:text-2xl font-bold">【R】感受反應 (Reflective)</h3>
                         </div>
                         <label class="block text-slate-700 text-base font-bold">
-                            當手牌中完全沒有目標數的因數可以出牌時，你的心情如何？
+                            在 3 分鐘倒數或手牌可能選錯累積失誤的壓力下，你的心情如何？
                         </label>
                         <textarea id="oridInputR" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-rose-200 focus:border-rose-500 focus:outline-none bg-white text-slate-800"></textarea>
                     </div>
@@ -426,7 +457,7 @@
                             <h3 class="text-xl md:text-2xl font-bold">【I】詮釋意義 (Interpretive)</h3>
                         </div>
                         <label class="block text-slate-700 text-base font-bold">
-                            你發現哪一類的數字（如偶數或合數）因數特別多？這對贏球有幫助嗎？
+                            你發現哪一類的數字（如偶數或合數）因數特別多？這對贏得比賽有幫助嗎？
                         </label>
                         <textarea id="oridInputI" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-amber-200 focus:border-amber-500 focus:outline-none bg-white text-slate-800"></textarea>
                     </div>
@@ -438,18 +469,18 @@
                             <h3 class="text-xl md:text-2xl font-bold">【D】做出決定 (Decisional)</h3>
                         </div>
                         <label class="block text-slate-700 text-base font-bold">
-                            下次進行對決時，你會採取什麼策略來更快找到因數？
+                            下次進行對決時，你會採取什麼策略來避免失誤並更快找到因數？
                         </label>
                         <textarea id="oridInputD" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-emerald-200 focus:border-emerald-500 focus:outline-none bg-white text-slate-800"></textarea>
                     </div>
 
                 </div>
 
-                <!-- Self & Peer Rubric Assessment Card -->
+                <!-- Self & Peer Rubric Assessment Card (Updated to reflect performance & time mastery) -->
                 <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
                     <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
                         <i class="fa-solid fa-star text-amber-500"></i>
-                        <span>小組合作與團隊品德自我評量</span>
+                        <span>小組表現與數感能力自我評量</span>
                     </h3>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -476,7 +507,7 @@
                         </div>
 
                         <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-2">
-                            <span class="font-bold text-slate-700 block text-lg">3. 互助暫停與品德溝通表現</span>
+                            <span class="font-bold text-slate-700 block text-lg">3. 時間掌握與策略抗壓表現</span>
                             <div class="flex items-center justify-between text-3xl text-amber-400 py-1">
                                 <button type="button" onclick="setStarRating('r3', 1)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
                                 <button type="button" onclick="setStarRating('r3', 2)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
@@ -530,7 +561,7 @@
                     </div>
                 </div>
 
-                <!-- Showcase Metrics Overview Cards -->
+                <!-- Showcase Metrics Overview Cards (Cleaned from 互助暫停) -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-center">
                         <span class="text-slate-500 text-sm font-bold block">已提交成果小組</span>
@@ -540,13 +571,13 @@
                         <span class="text-slate-500 text-sm font-bold block">平均對決積分</span>
                         <span id="showcaseAvgScore" class="text-3xl md:text-4xl font-black text-amber-700">0</span>
                     </div>
-                    <div class="bg-sky-50 p-4 rounded-2xl border border-sky-100 text-center">
-                        <span class="text-slate-500 text-sm font-bold block">互助暫停次數累積</span>
-                        <span id="showcaseTotalMutualHelp" class="text-3xl md:text-4xl font-black text-sky-700">0</span>
-                    </div>
                     <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 text-center">
+                        <span class="text-slate-500 text-sm font-bold block">成功出牌總數</span>
+                        <span id="showcaseTotalSuccess" class="text-3xl md:text-4xl font-black text-emerald-700">0</span>
+                    </div>
+                    <div class="bg-sky-50 p-4 rounded-2xl border border-sky-100 text-center">
                         <span class="text-slate-500 text-sm font-bold block">平均評量星等</span>
-                        <span id="showcaseAvgStars" class="text-3xl md:text-4xl font-black text-emerald-700">0.0 ★</span>
+                        <span id="showcaseAvgStars" class="text-3xl md:text-4xl font-black text-sky-700">0.0 ★</span>
                     </div>
                 </div>
 
@@ -619,7 +650,7 @@
                 </div>
             </div>
 
-            <!-- Three Core Sections -->
+            <!-- Three Core Sections (Updated to 3 min timer & 3 mistakes rule) -->
             <div class="space-y-6 text-slate-700">
                 
                 <!-- Section 1: 學習目標 -->
@@ -639,7 +670,7 @@
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-circle-check text-indigo-600 mt-1 shrink-0"></i>
-                            <span><strong>情意與品德 (SEL)：</strong>實踐「互助暫停」機制，在夥伴卡牌時主動給予口頭線索支援，體認團隊共好精神，並透過 ORID 進行深刻數感反思。</span>
+                            <span><strong>專注與抗壓：</strong>在限時 3 分鐘與最多 3 次失誤限制的高張力情境中，培養冷靜判斷與策略出牌能力，並透過 ORID 進行深刻數感反思。</span>
                         </li>
                     </ul>
                 </div>
@@ -653,15 +684,15 @@
                     <ul class="space-y-2.5 text-base md:text-lg pl-2">
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-cubes text-amber-600 mt-1 shrink-0"></i>
-                            <span><strong>頂端功能列：</strong>由左至右分別為「QR Code 掃碼分享（支援 iPad 相機直接掃碼與一鍵複製網址）」、「全螢幕切換」及「課程設計說明」。</span>
+                            <span><strong>頂端功能列：</strong>由左至右為「QR Code 掃碼分享（支援 iPad 相機掃碼與一鍵複製網址）」、「全螢幕切換」及「課程設計說明」。</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-compass text-indigo-600 mt-1 shrink-0"></i>
-                            <span><strong>活動一：課程導入：</strong>提供輸入任意整數立即分析全因數與乘法配對之熱身測驗，並由小組勾選「公平競賽承諾」。</span>
+                            <span><strong>活動一：課程導入：</strong>提供輸入任意整數立即分析全因數與乘法配對之熱身測驗，並由小組勾選「規則確認與公平承諾」。</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-gamepad text-emerald-600 mt-1 shrink-0"></i>
-                            <span><strong>活動二：因數接龍：</strong>點擊「翻下一張目標牌」展開回合；大數字（$\ge 20$）強制限制模式；連續無法出牌可啟動「互助暫停」支援並加分；全部解鎖觸發大滿貫獎勵！</span>
+                            <span><strong>活動二：因數接龍：</strong>挑戰時限為 <strong>3 分鐘</strong>，打錯手牌或違反大數限制累積 <strong>3 次失誤</strong> 即刻終止遊戲；全部解鎖觸發大滿貫獎勵！</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-pen-to-square text-rose-600 mt-1 shrink-0"></i>
@@ -686,8 +717,8 @@
                             <p class="text-slate-600">「如果目標數是 18，除了最簡單的 1 和 18 以外，你第一時間能在腦中想到哪一組相乘等於 18 的數字？」</p>
                         </div>
                         <div class="border-l-4 border-amber-500 pl-3">
-                            <p class="font-bold text-amber-900">2. 發展階段（突破思維定勢與團隊互助）</p>
-                            <p class="text-slate-600">「當目標數變成 24 而且禁止出 1 和 24 時，大家的手牌為什麼會突然卡住？這時候該如何尋找中間的因數？優勢玩家該如何給出清晰卻不直接破梗的線索？」</p>
+                            <p class="font-bold text-amber-900">2. 發展階段（突破思維定勢與時限抗壓）</p>
+                            <p class="text-slate-600">「當目標數變成 24 而且禁止出 1 和 24，加上 3 分鐘倒數壓力與只能錯 3 次的規則，你們小組如何冷靜找到中間的因數避免失誤？」</p>
                         </div>
                         <div class="border-l-4 border-sky-500 pl-3">
                             <p class="font-bold text-sky-900">3. 歸納階段（ORID 後設認知收斂）</p>
@@ -706,43 +737,58 @@
         </div>
     </div>
 
-    <!-- MODAL 3: MUTUAL SUPPORT PAUSE MODAL -->
-    <div id="mutualSupportModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 space-y-6 card-shadow border-4 border-amber-400 text-center relative animate-bounce-once">
-            <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
-                <i class="fa-solid fa-hand-holding-hand"></i>
+    <!-- MODAL 3: GAME TERMINATION MODAL (Replaces Mutual Support Modal) -->
+    <div id="gameOverModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-6 card-shadow border-4 border-rose-500 text-center relative animate-bounce-once">
+            <div id="gameOverIconContainer" class="w-20 h-20 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
+                <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
 
             <div class="space-y-2">
-                <span class="bg-amber-500 text-indigo-950 font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider">
-                    品德教育 ‧ 互助機制
+                <span id="gameOverBadge" class="bg-rose-500 text-white font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider">
+                    挑戰終止
                 </span>
-                <h3 class="text-3xl font-black text-slate-800">啟動「互助暫停」！</h3>
-                <p class="text-slate-600 text-lg">
-                    組員遇到卡牌困境時，團隊暫停並互相支援！
+                <h3 id="gameOverTitle" class="text-3xl font-black text-slate-800">遊戲已結束！</h3>
+                <p id="gameOverDesc" class="text-slate-600 text-lg">
+                    已達終止條件，請檢視本次接龍成果。
                 </p>
             </div>
 
-            <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 text-left space-y-3">
-                <p class="text-amber-900 font-bold text-lg">🤝 互助步驟指示：</p>
-                <ol class="list-decimal list-inside text-slate-700 space-y-2 text-base md:text-lg">
-                    <li>擁有最多手牌的<strong>「優勢玩家」</strong>，將手中一張牌面朝下推給卡牌組員。</li>
-                    <li>優勢玩家給予口頭線索（例如：<em>「這是 18 的最大奇數因數！」</em>）。</li>
-                    <li>協助夥伴成功出牌後，小組獲得額外 +20 分品德團隊獎勵分數！</li>
-                </ol>
+            <!-- Stats Box -->
+            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 grid grid-cols-3 gap-2 text-center">
+                <div>
+                    <span class="text-xs text-slate-400 block font-bold">累積積分</span>
+                    <span id="gameOverScore" class="text-2xl font-black text-amber-500">0</span>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-400 block font-bold">成功出牌</span>
+                    <span id="gameOverSuccess" class="text-2xl font-black text-emerald-600">0</span>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-400 block font-bold">累積失誤</span>
+                    <span id="gameOverMistakes" class="text-2xl font-black text-rose-500">0 / 3</span>
+                </div>
             </div>
 
-            <button onclick="confirmMutualSupport()" class="w-full bg-amber-500 hover:bg-amber-600 text-indigo-950 font-black text-2xl py-4 rounded-2xl shadow-lg transition-all active:scale-95">
-                完成互助傳牌，加算品德積分 +20！
-            </button>
+            <!-- Action buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button onclick="restartSolitaireGame(); closeModal('gameOverModal');" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-black text-xl py-4 rounded-2xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span>再挑戰一次</span>
+                </button>
+                <button onclick="closeModal('gameOverModal'); switchTab('act3');" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl py-4 rounded-2xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <span>前往焦點反思</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- MODAL 4: CONFIRM CLEAR SHOWCASE MODAL (Replaces window.confirm) -->
+    <!-- MODAL 4: CONFIRM CLEAR SHOWCASE MODAL -->
     <div id="clearConfirmModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center space-y-5 card-shadow relative">
             <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i class="fa-solid fa-trash-can"></i>
             </div>
             <h3 class="text-2xl font-bold text-slate-800">確定要清空展示成果？</h3>
             <p class="text-slate-600 text-base">清空後所有小組成果與反思記錄將被移除，此動作無法復原。</p>
@@ -760,7 +806,7 @@
     <script>
         // GLOBAL APP STATE (Strict Zero Defaults & Audio Completely Removed)
         const appState = {
-            version: "v1.3.0",
+            version: "v1.5.0",
             activeTab: "act1",
             consensusAgreed: false,
             
@@ -768,7 +814,13 @@
             groupName: "",
             score: 0,
             successCount: 0,
-            mutualHelpCount: 0,
+            mistakes: 0,            // Max 3 mistakes allowed
+            maxMistakes: 3,
+            gameTimeLeft: 180,      // 3 Minutes (180s) countdown
+            timerInterval: null,
+            isGameRunning: false,
+            isGameOver: false,
+
             currentTarget: null,
             targetFactors: [],
             playedFactors: [],
@@ -800,8 +852,10 @@
                 activeBtn.classList.remove('text-indigo-300');
             }
 
-            if (tabId === 'act2' && !appState.currentTarget) {
-                drawNewTargetCard();
+            if (tabId === 'act2') {
+                if (!appState.isGameRunning && !appState.isGameOver) {
+                    startSolitaireGame();
+                }
             }
 
             if (tabId === 'act4') {
@@ -861,7 +915,7 @@
 
         // Close modals on clicking backdrop
         window.addEventListener('click', (e) => {
-            ['qrModal', 'guideModal', 'mutualSupportModal', 'clearConfirmModal'].forEach(mId => {
+            ['qrModal', 'guideModal', 'gameOverModal', 'clearConfirmModal'].forEach(mId => {
                 const modal = document.getElementById(mId);
                 if (modal && e.target === modal) {
                     closeModal(mId);
@@ -872,7 +926,7 @@
         // Close on ESC key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                ['qrModal', 'guideModal', 'mutualSupportModal', 'clearConfirmModal'].forEach(mId => closeModal(mId));
+                ['qrModal', 'guideModal', 'gameOverModal', 'clearConfirmModal'].forEach(mId => closeModal(mId));
             }
         });
 
@@ -924,6 +978,10 @@
 
         function syncGroupName(val) {
             appState.groupName = val;
+            const a2 = document.getElementById('groupNameInput');
+            const a3 = document.getElementById('oridGroupNameInput');
+            if (a2 && a2.value !== val) a2.value = val;
+            if (a3 && a3.value !== val) a3.value = val;
         }
 
         // ACTIVITY 1: QUICK FACTOR TESTER
@@ -976,7 +1034,7 @@
             appState.consensusAgreed = chk.checked;
             if (chk.checked) {
                 badge.classList.remove('hidden');
-                showToast("小組已完成規則確認與承諾！");
+                showToast("小組已完成規則確認！準備進入競技場！");
             } else {
                 badge.classList.add('hidden');
             }
@@ -985,11 +1043,122 @@
         // ACTIVITY 2: GAME ARENA ENGINE
         const TARGET_POOL = [12, 16, 18, 20, 24, 28, 30, 32, 36, 40, 42, 45, 48, 60];
 
+        // Start Solitaire Game (3 minutes timer)
+        function startSolitaireGame() {
+            if (appState.timerInterval) clearInterval(appState.timerInterval);
+
+            appState.gameTimeLeft = 180; // 3 minutes = 180 seconds
+            appState.mistakes = 0;
+            appState.isGameRunning = true;
+            appState.isGameOver = false;
+
+            updateTimerDisplay();
+            updateMistakesUI();
+            drawNewTargetCard();
+
+            appState.timerInterval = setInterval(() => {
+                if (appState.gameTimeLeft > 0) {
+                    appState.gameTimeLeft--;
+                    updateTimerDisplay();
+
+                    if (appState.gameTimeLeft <= 0) {
+                        terminateGame("timeup");
+                    }
+                }
+            }, 1000);
+        }
+
+        function restartSolitaireGame() {
+            appState.score = 0;
+            appState.successCount = 0;
+            document.getElementById('arenaScore').innerText = "0";
+            document.getElementById('arenaSuccessCount').innerText = "0";
+            addArenaMatchLog(`🔄 【重置】重新開始 3 分鐘因數接龍挑戰！`);
+            startSolitaireGame();
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(appState.gameTimeLeft / 60);
+            const s = appState.gameTimeLeft % 60;
+            const timerEl = document.getElementById('arenaTimerDisplay');
+            timerEl.innerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+            if (appState.gameTimeLeft <= 30 && appState.gameTimeLeft > 0) {
+                timerEl.classList.add('timer-warning');
+            } else {
+                timerEl.classList.remove('timer-warning');
+            }
+        }
+
+        function updateMistakesUI() {
+            for (let i = 1; i <= 3; i++) {
+                const heart = document.getElementById(`mistake-heart-${i}`);
+                if (i <= appState.mistakes) {
+                    // Lost heart / strike
+                    heart.className = "fa-solid fa-heart-crack text-rose-500";
+                } else {
+                    // Active heart
+                    heart.className = "fa-solid fa-heart text-emerald-400";
+                }
+            }
+        }
+
+        function terminateGame(reason) {
+            appState.isGameRunning = false;
+            appState.isGameOver = true;
+            if (appState.timerInterval) {
+                clearInterval(appState.timerInterval);
+                appState.timerInterval = null;
+            }
+
+            renderHandCardsUI(); // Disable all cards
+
+            const iconContainer = document.getElementById('gameOverIconContainer');
+            const titleEl = document.getElementById('gameOverTitle');
+            const descEl = document.getElementById('gameOverDesc');
+            const badgeEl = document.getElementById('gameOverBadge');
+
+            document.getElementById('gameOverScore').innerText = appState.score;
+            document.getElementById('gameOverSuccess').innerText = appState.successCount;
+            document.getElementById('gameOverMistakes').innerText = `${appState.mistakes} / 3`;
+
+            if (reason === "mistakes") {
+                iconContainer.className = "w-20 h-20 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner";
+                iconContainer.innerHTML = `<i class="fa-solid fa-heart-crack"></i>`;
+                badgeEl.className = "bg-rose-600 text-white font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider";
+                badgeEl.innerText = "失誤上限已滿";
+                titleEl.innerText = "選擇錯誤達 3 次！";
+                descEl.innerText = "很遺憾！手牌累積 3 次失誤，接龍挑戰立即終止。";
+                addArenaMatchLog(`⛔ 【遊戲終止】手牌選擇錯誤達 3 次，接龍已終止！最終積分：${appState.score} 分`);
+            } else if (reason === "timeup") {
+                iconContainer.className = "w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner";
+                iconContainer.innerHTML = `<i class="fa-solid fa-clock"></i>`;
+                badgeEl.className = "bg-amber-600 text-white font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider";
+                badgeEl.innerText = "3 分鐘時間到";
+                titleEl.innerText = "接龍時間結束！";
+                descEl.innerText = "時間已用盡！請檢視小組得分並前往活動三進行焦點反思。";
+                addArenaMatchLog(`⏰ 【時間到】3 分鐘挑戰時間截止！最終積分：${appState.score} 分`);
+            }
+
+            if (appState.activeTab === 'act2') {
+                openModal('gameOverModal');
+            }
+        }
+
         function drawNewTargetCard() {
+            if (appState.isGameOver) {
+                showToast("挑戰已結束，請點擊「重新開始挑戰」！");
+                return;
+            }
+
             const randTarget = TARGET_POOL[Math.floor(Math.random() * TARGET_POOL.length)];
             appState.currentTarget = randTarget;
             appState.targetFactors = getFactors(randTarget);
             appState.playedFactors = [];
+
+            // Reset next button pulse effect
+            const nextBtn = document.getElementById('btnNextTarget');
+            if (nextBtn) nextBtn.classList.remove('pulse-border', 'ring-4', 'ring-amber-400');
 
             // UI update target card
             document.getElementById('targetCardTopVal').innerText = randTarget;
@@ -1027,9 +1196,15 @@
             const allowedFactors = factors.filter(f => !(isRestricted && (f === 1 || f === target)));
             const cardsSet = new Set(allowedFactors);
 
+            // Intentionally include 1 (and the target if <= 36) in restricted mode to test anti-intuitive impulse
+            if (isRestricted) {
+                cardsSet.add(1);
+                if (target <= 36) cardsSet.add(target);
+            }
+
             // Add distractors (numbers that are NOT factors of target)
-            while (cardsSet.size < Math.min(12, Math.max(allowedFactors.length + 4, 8))) {
-                const distractor = Math.floor(Math.random() * (target > 30 ? 30 : 20)) + 2;
+            while (cardsSet.size < Math.min(12, Math.max(allowedFactors.length + 5, 8))) {
+                const distractor = Math.floor(Math.random() * (target > 30 ? 32 : 20)) + 2;
                 if (target % distractor !== 0) {
                     cardsSet.add(distractor);
                 }
@@ -1054,6 +1229,15 @@
                         </button>
                     `;
                 }
+
+                if (appState.isGameOver) {
+                    return `
+                        <button disabled class="h-20 md:h-24 bg-slate-100 text-slate-400 font-black text-2xl md:text-3xl rounded-2xl border border-slate-300 flex items-center justify-center opacity-50 cursor-not-allowed">
+                            ${num}
+                        </button>
+                    `;
+                }
+
                 return `
                     <button onclick="playHandCard(${num}, ${idx})" class="game-card-btn h-20 md:h-24 bg-white text-indigo-950 font-black text-2xl md:text-3xl rounded-2xl border-2 border-indigo-200 hover:border-amber-400 hover:bg-amber-100 flex items-center justify-center shadow-md active:scale-90 transition-all">
                         ${num}
@@ -1063,6 +1247,11 @@
         }
 
         function playHandCard(num, idx) {
+            if (appState.isGameOver) {
+                showToast("挑戰已結束，請重新開始挑戰！");
+                return;
+            }
+
             if (!appState.currentTarget) {
                 showToast("請先翻開目標牌！");
                 return;
@@ -1071,10 +1260,16 @@
             const target = appState.currentTarget;
             const isRestricted = target >= 20;
 
-            // Restriction violation check
+            // Restriction violation check: Playing 1 or target itself when restricted
             if (isRestricted && (num === 1 || num === target)) {
-                showToast(`限制條件生效中！大數字 ${target} 禁止打出 ${num}！`);
-                addArenaMatchLog(`❌ 違規：目標 ${target} (≥20) 禁止打出 ${num}`);
+                appState.mistakes++;
+                updateMistakesUI();
+                showToast(`❌ 違反限制！目標 ${target} (≥20) 禁止打出 ${num}！(失誤 ${appState.mistakes}/3)`);
+                addArenaMatchLog(`❌ 違規失誤：目標 ${target} (≥20) 禁止打出 ${num}！(失誤 ${appState.mistakes}/3)`);
+
+                if (appState.mistakes >= appState.maxMistakes) {
+                    terminateGame("mistakes");
+                }
                 return;
             }
 
@@ -1105,11 +1300,23 @@
                     document.getElementById('arenaScore').innerText = appState.score;
                     addArenaMatchLog(`🎉 大滿貫！目標數【${target}】所有因數已全數解鎖！(額外獎勵 +30 分)`);
                     showToast(`🎉 太棒了！已找出【${target}】所有的因數！額外加 30 分！`);
+
+                    const nextBtn = document.getElementById('btnNextTarget');
+                    if (nextBtn) {
+                        nextBtn.classList.add('pulse-border', 'ring-4', 'ring-amber-400');
+                    }
                 }
 
             } else {
-                showToast(`數字 ${num} 不是 ${target} 的因數喔！`);
-                addArenaMatchLog(`⚠️ 錯誤：${num} 無法整除 ${target}`);
+                // INCORRECT PLAY -> ACCUMULATE MISTAKE
+                appState.mistakes++;
+                updateMistakesUI();
+                showToast(`❌ 錯誤！${num} 不是 ${target} 的因數！(失誤 ${appState.mistakes}/3)`);
+                addArenaMatchLog(`⚠️ 選擇錯誤：${num} 無法整除 ${target}！(失誤 ${appState.mistakes}/3)`);
+
+                if (appState.mistakes >= appState.maxMistakes) {
+                    terminateGame("mistakes");
+                }
             }
         }
 
@@ -1137,20 +1344,6 @@
             document.getElementById('factorPairProgressText').innerText = `${appState.playedFactors.length} / ${allowedFactors.length}`;
             document.getElementById('arenaScore').innerText = appState.score;
             document.getElementById('arenaSuccessCount').innerText = appState.successCount;
-        }
-
-        function triggerMutualSupportPause() {
-            openModal('mutualSupportModal');
-        }
-
-        function confirmMutualSupport() {
-            appState.mutualHelpCount++;
-            appState.score += 20;
-            document.getElementById('arenaMutualHelpCount').innerText = appState.mutualHelpCount;
-            document.getElementById('arenaScore').innerText = appState.score;
-            closeModal('mutualSupportModal');
-            addArenaMatchLog(`🤝 小組啟動「互助暫停」支援，品德積分 +20！`);
-            showToast("完成互助傳牌，加算品德積分 +20！");
         }
 
         function addArenaMatchLog(msg) {
@@ -1191,7 +1384,8 @@
                 timestamp: new Date().toLocaleString('zh-TW'),
                 groupName: gName,
                 score: appState.score,
-                mutualHelpCount: appState.mutualHelpCount,
+                successCount: appState.successCount,
+                mistakes: appState.mistakes,
                 orid: { O: inputO, R: inputR, I: inputI, D: inputD },
                 ratings: { ...appState.ratings },
                 likes: 0
@@ -1217,7 +1411,7 @@
             const container = document.getElementById('studentWorksContainer');
             const totalGroupsEl = document.getElementById('showcaseTotalGroups');
             const avgScoreEl = document.getElementById('showcaseAvgScore');
-            const totalMutualEl = document.getElementById('showcaseTotalMutualHelp');
+            const totalSuccessEl = document.getElementById('showcaseTotalSuccess');
             const avgStarsEl = document.getElementById('showcaseAvgStars');
             const countBadge = document.getElementById('showcaseCountBadge');
 
@@ -1227,7 +1421,7 @@
 
             if (records.length === 0) {
                 avgScoreEl.innerText = "0";
-                totalMutualEl.innerText = "0";
+                totalSuccessEl.innerText = "0";
                 avgStarsEl.innerText = "0.0 ★";
                 container.innerHTML = `
                     <div class="col-span-full py-16 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-300 space-y-3">
@@ -1242,12 +1436,12 @@
             }
 
             const totalScore = records.reduce((sum, r) => sum + r.score, 0);
-            const totalMutual = records.reduce((sum, r) => sum + r.mutualHelpCount, 0);
+            const totalSuccess = records.reduce((sum, r) => sum + r.successCount, 0);
             const avgScore = Math.round(totalScore / records.length);
             const avgRating = (records.reduce((sum, r) => sum + ((r.ratings.r1 + r.ratings.r2 + r.ratings.r3) / 3), 0) / records.length).toFixed(1);
 
             avgScoreEl.innerText = avgScore;
-            totalMutualEl.innerText = totalMutual;
+            totalSuccessEl.innerText = totalSuccess;
             avgStarsEl.innerText = `${avgRating} ★`;
 
             container.innerHTML = records.map((r, idx) => {
@@ -1273,9 +1467,13 @@
 
                         <!-- Mini stats badges -->
                         <div class="flex flex-wrap gap-2 text-sm font-bold">
-                            <span class="bg-sky-50 text-sky-700 px-3 py-1 rounded-xl border border-sky-200 flex items-center gap-1.5">
-                                <i class="fa-solid fa-handshake-angle text-sky-500"></i>
-                                互助暫停：${r.mutualHelpCount} 次
+                            <span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-xl border border-emerald-200 flex items-center gap-1.5">
+                                <i class="fa-solid fa-check text-emerald-600"></i>
+                                成功出牌：${r.successCount} 次
+                            </span>
+                            <span class="bg-rose-50 text-rose-700 px-3 py-1 rounded-xl border border-rose-200 flex items-center gap-1.5">
+                                <i class="fa-solid fa-heart-crack text-rose-500"></i>
+                                累積失誤：${r.mistakes} 次
                             </span>
                             <span class="bg-amber-50 text-amber-800 px-3 py-1 rounded-xl border border-amber-200 flex items-center gap-1.5">
                                 <i class="fa-solid fa-star text-amber-500"></i>
@@ -1290,7 +1488,7 @@
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.O)}</p>
                             </div>
                             <div class="bg-rose-50/60 p-3 rounded-xl border border-rose-100">
-                                <span class="font-bold text-rose-900 block text-sm">【R】無牌可出時的心情：</span>
+                                <span class="font-bold text-rose-900 block text-sm">【R】限時與失誤壓力下的心情：</span>
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.R)}</p>
                             </div>
                             <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-100">
@@ -1298,7 +1496,7 @@
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.I)}</p>
                             </div>
                             <div class="bg-emerald-50/60 p-3 rounded-xl border border-emerald-100">
-                                <span class="font-bold text-emerald-900 block text-sm">【D】下次採取的策略：</span>
+                                <span class="font-bold text-emerald-900 block text-sm">【D】下次採取的抗壓策略：</span>
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.D)}</p>
                             </div>
                         </div>
@@ -1359,14 +1557,15 @@
             }
 
             let csvContent = "\uFEFF"; // UTF-8 BOM for Excel compatibility
-            csvContent += "時間,探究小組,對決得分,互助暫停次數,獲得愛心數,ORID-O(客觀事實),ORID-R(感受反應),ORID-I(詮釋意義),ORID-D(做出決定),熟練度星等,限制遵守星等,團隊互助星等\n";
+            csvContent += "時間,探究小組,對決得分,成功出牌次數,累積失誤次數,獲得愛心數,ORID-O(客觀事實),ORID-R(感受反應),ORID-I(詮釋意義),ORID-D(做出決定),熟練度星等,限制遵守星等,策略抗壓星等\n";
 
             appState.records.forEach(r => {
                 const row = [
                     `"${r.timestamp}"`,
                     `"${r.groupName}"`,
                     r.score,
-                    r.mutualHelpCount,
+                    r.successCount,
+                    r.mistakes,
                     r.likes,
                     `"${r.orid.O.replace(/"/g, '""')}"`,
                     `"${r.orid.R.replace(/"/g, '""')}"`,
