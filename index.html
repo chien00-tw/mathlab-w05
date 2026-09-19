@@ -7,11 +7,11 @@
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome 6 Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts Noto Sans TC -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
-    <!-- html2canvas for Image Export -->
+    <!-- html2canvas for High Resolution Image Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
@@ -58,7 +58,7 @@
 
         @keyframes timer-pulse {
             from { color: #ef4444; transform: scale(1); }
-            to { color: #b91c1c; transform: scale(1.05); }
+            to { color: #b91c1c; transform: scale(1.06); }
         }
 
         ::-webkit-scrollbar {
@@ -88,11 +88,11 @@
                     <span>因數大對決</span>
                 </div>
                 <span class="bg-indigo-800/80 text-amber-300 text-sm md:text-base px-3 py-1 rounded-xl border border-indigo-600/70 font-mono font-bold shadow-sm">
-                    v1.8.0
+                    v1.9.1
                 </span>
             </div>
 
-            <!-- Right: Action Icons ONLY (No text labels) -->
+            <!-- Right: Action Icons ONLY (Strictly No Text Labels) -->
             <div class="flex items-center space-x-2 md:space-x-3">
                 <!-- ① QR Code 掃碼連結 [QR Icon] -->
                 <button onclick="openModal('qrModal')" title="QR Code 掃碼連結" class="w-12 h-12 md:w-14 md:h-14 bg-indigo-800 hover:bg-amber-500 hover:text-indigo-950 text-white rounded-2xl flex items-center justify-center text-xl md:text-2xl transition-all shadow-md active:scale-95 border border-indigo-700">
@@ -114,7 +114,7 @@
 
     <!-- MAIN TAB NAVIGATION BAR -->
     <div class="bg-indigo-950/90 text-white border-b border-indigo-800/80 sticky top-[68px] z-30 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-2 md:px-4 grid grid-cols-2 md:grid-cols-4 gap-2 py-2">
+        <div class="max-w-7xl mx-auto px-2 md:px-4 grid grid-cols-3 gap-2 py-2">
             <button onclick="switchTab('act1')" id="tabBtn-act1" class="tab-btn active text-base md:text-xl font-bold px-3 md:px-5 py-3 rounded-2xl transition-all flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-md">
                 <i class="fa-solid fa-compass"></i>
                 <span>活動一：課程導入</span>
@@ -122,10 +122,6 @@
             <button onclick="switchTab('act2')" id="tabBtn-act2" class="tab-btn text-base md:text-xl font-bold px-3 md:px-5 py-3 rounded-2xl transition-all flex items-center justify-center gap-2 text-indigo-300 hover:bg-indigo-900/60">
                 <i class="fa-solid fa-gamepad"></i>
                 <span>活動二：因數接龍</span>
-            </button>
-            <button onclick="switchTab('act3')" id="tabBtn-act3" class="tab-btn text-base md:text-xl font-bold px-3 md:px-5 py-3 rounded-2xl transition-all flex items-center justify-center gap-2 text-indigo-300 hover:bg-indigo-900/60">
-                <i class="fa-solid fa-pen-to-square"></i>
-                <span>活動三：焦點反思</span>
             </button>
             <button onclick="switchTab('act4')" id="tabBtn-act4" class="tab-btn text-base md:text-xl font-bold px-3 md:px-5 py-3 rounded-2xl transition-all flex items-center justify-center gap-2 text-indigo-300 hover:bg-indigo-900/60">
                 <i class="fa-solid fa-award text-amber-400"></i>
@@ -210,6 +206,10 @@
                             <li class="flex items-start gap-3 bg-rose-50 p-3.5 rounded-2xl border border-rose-200">
                                 <span class="bg-rose-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-base font-bold shrink-0 mt-0.5">3</span>
                                 <span><strong>時限與失誤限制：</strong> 挑戰時間設定為 <strong>2 分鐘</strong>，手牌選擇錯誤累積達 <strong>3 次</strong> 即刻終止挑戰！</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-purple-50 p-3.5 rounded-2xl border border-purple-200">
+                                <span class="bg-purple-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-base font-bold shrink-0 mt-0.5">4</span>
+                                <span><strong>智慧 ORID 自動產出：</strong> 挑戰完成後，系統將直接依據對決成效自動產出專屬的 ORID 數感反思筆記！</span>
                             </li>
                         </ul>
                     </div>
@@ -377,143 +377,14 @@
                         <span>即時挑戰動態紀錄</span>
                     </h4>
                     <div id="arenaMatchLog" class="h-24 overflow-y-auto text-base text-slate-600 space-y-1 font-mono bg-white p-3 rounded-xl border border-slate-200">
-                        <p class="text-slate-400">【系統】個人挑戰競技場準備就緒，請填寫姓名並翻開目標牌開始 2 分鐘挑戰。</p>
+                        <p class="text-slate-400">【系統】個人挑戰競技場準備就緒，請填寫班級座號並翻開目標牌開始 2 分鐘挑戰。</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- ACTIVITY 3: ORID 焦點討論與自我評量 -->
-        <section id="act3-view" class="tab-content hidden space-y-6">
-            <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border border-slate-200 space-y-8">
-                
-                <div class="border-b border-slate-200 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <span class="bg-indigo-100 text-indigo-800 font-bold text-sm px-3 py-1 rounded-full">
-                            活動三：綜合歸納
-                        </span>
-                        <h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-2">
-                            ORID 焦點反思與自我評量
-                        </h2>
-                        <p class="text-slate-600 text-lg mt-1">
-                            請靜下心反思今天的遊戲體驗與解題策略，完成後將公開展示於「成果展示牆」：
-                        </p>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                        <div>
-                            <span class="text-slate-500 text-xs font-bold block">班級座號</span>
-                            <input type="text" id="oridStudentNameInput" placeholder="例：501班08號" oninput="syncStudentName(this.value)" class="bg-white text-indigo-950 font-bold text-lg px-3 py-1.5 rounded-xl border border-slate-300 focus:outline-none focus:border-indigo-600 w-48">
-                        </div>
-                        <div class="text-right border-l pl-3 border-slate-200">
-                            <span class="text-slate-500 text-xs font-bold block">填答狀態</span>
-                            <span id="oridFormStatus" class="text-amber-600 text-xl font-bold">尚未送出</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ORID Inputs -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-sky-50/70 p-6 rounded-3xl border-2 border-sky-200 space-y-3">
-                        <div class="flex items-center space-x-3 text-sky-900">
-                            <span class="bg-sky-600 text-white w-10 h-10 rounded-2xl flex items-center justify-center font-black text-xl shadow-md">O</span>
-                            <h3 class="text-xl md:text-2xl font-bold">【O】客觀事實 (Objective)</h3>
-                        </div>
-                        <label class="block text-slate-700 text-base font-bold">
-                            在剛才的接龍挑戰中，你成功打出了哪些數字的因數？
-                        </label>
-                        <textarea id="oridInputO" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-sky-200 focus:border-sky-500 focus:outline-none bg-white text-slate-800"></textarea>
-                    </div>
-
-                    <div class="bg-rose-50/70 p-6 rounded-3xl border-2 border-rose-200 space-y-3">
-                        <div class="flex items-center space-x-3 text-rose-900">
-                            <span class="bg-rose-600 text-white w-10 h-10 rounded-2xl flex items-center justify-center font-black text-xl shadow-md">R</span>
-                            <h3 class="text-xl md:text-2xl font-bold">【R】感受反應 (Reflective)</h3>
-                        </div>
-                        <label class="block text-slate-700 text-base font-bold">
-                            在 2 分鐘限時倒數與最多只能失誤 3 次的節奏下，你的心情如何？
-                        </label>
-                        <textarea id="oridInputR" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-rose-200 focus:border-rose-500 focus:outline-none bg-white text-slate-800"></textarea>
-                    </div>
-
-                    <div class="bg-amber-50/70 p-6 rounded-3xl border-2 border-amber-200 space-y-3">
-                        <div class="flex items-center space-x-3 text-amber-900">
-                            <span class="bg-amber-600 text-white w-10 h-10 rounded-2xl flex items-center justify-center font-black text-xl shadow-md">I</span>
-                            <h3 class="text-xl md:text-2xl font-bold">【I】詮釋意義 (Interpretive)</h3>
-                        </div>
-                        <label class="block text-slate-700 text-base font-bold">
-                            你發現 100 以內哪一類的數字因數特別多？這對迅速累積得分有幫助嗎？
-                        </label>
-                        <textarea id="oridInputI" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-amber-200 focus:border-amber-500 focus:outline-none bg-white text-slate-800"></textarea>
-                    </div>
-
-                    <div class="bg-emerald-50/70 p-6 rounded-3xl border-2 border-emerald-200 space-y-3">
-                        <div class="flex items-center space-x-3 text-emerald-900">
-                            <span class="bg-emerald-600 text-white w-10 h-10 rounded-2xl flex items-center justify-center font-black text-xl shadow-md">D</span>
-                            <h3 class="text-xl md:text-2xl font-bold">【D】做出決定 (Decisional)</h3>
-                        </div>
-                        <label class="block text-slate-700 text-base font-bold">
-                            下次進行接龍時，你會採取什麼心算或乘法策略來避免失誤並拿更高分？
-                        </label>
-                        <textarea id="oridInputD" rows="3" class="w-full text-lg md:text-xl p-4 rounded-2xl border-2 border-emerald-200 focus:border-emerald-500 focus:outline-none bg-white text-slate-800"></textarea>
-                    </div>
-                </div>
-
-                <!-- Rubrics Assessment Card -->
-                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
-                    <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fa-solid fa-star text-amber-500"></i>
-                        <span>個人表現與數感能力自我評量</span>
-                    </h3>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-2">
-                            <span class="font-bold text-slate-700 block text-lg">1. 快速判定因數熟練度</span>
-                            <div class="flex items-center justify-between text-3xl text-amber-400 py-1">
-                                <button type="button" onclick="setStarRating('r1', 1)" class="star-r1"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r1', 2)" class="star-r1"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r1', 3)" class="star-r1"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r1', 4)" class="star-r1"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r1', 5)" class="star-r1"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-2">
-                            <span class="font-bold text-slate-700 block text-lg">2. 乘法配對與因數完整性</span>
-                            <div class="flex items-center justify-between text-3xl text-amber-400 py-1">
-                                <button type="button" onclick="setStarRating('r2', 1)" class="star-r2"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r2', 2)" class="star-r2"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r2', 3)" class="star-r2"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r2', 4)" class="star-r2"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r2', 5)" class="star-r2"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-2">
-                            <span class="font-bold text-slate-700 block text-lg">3. 2分鐘時間掌握與抗壓表現</span>
-                            <div class="flex items-center justify-between text-3xl text-amber-400 py-1">
-                                <button type="button" onclick="setStarRating('r3', 1)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r3', 2)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r3', 3)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r3', 4)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                                <button type="button" onclick="setStarRating('r3', 5)" class="star-r3"><i class="fa-solid fa-star text-slate-300 hover:text-amber-400"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center pt-2">
-                    <button onclick="saveOridReflection()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-2xl md:text-3xl px-12 py-5 rounded-3xl shadow-xl transition-all active:scale-95 inline-flex items-center gap-3">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>送出成果並在成果牆公開展示</span>
-                    </button>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ACTIVITY 4: 成果展示牆 -->
+        <!-- ACTIVITY 4: 成果展示牆 (Direct in-page showcase) -->
         <section id="act4-view" class="tab-content hidden space-y-6">
             <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border border-slate-200 space-y-6">
                 
@@ -527,7 +398,7 @@
                             個人學習成果與 ORID 數感反思筆記
                         </h2>
                         <p class="text-slate-600 text-lg mt-1">
-                            每位同學的對決戰績與反思筆記將直接在此呈現，支援一鍵下載個人圖檔！
+                            每位同學的接龍戰績與系統自動化生成的 ORID 數感反思在此直接陳列，支援一鍵下載個人圖檔！
                         </p>
                     </div>
 
@@ -545,7 +416,7 @@
                 <!-- Showcase Metrics Overview Cards -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-center">
-                        <span class="text-slate-500 text-sm font-bold block">已繳交成果人數</span>
+                        <span class="text-slate-500 text-sm font-bold block">已發布成果人數</span>
                         <span id="showcaseTotalGroups" class="text-3xl md:text-4xl font-black text-indigo-700">0</span>
                     </div>
                     <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100 text-center">
@@ -557,8 +428,8 @@
                         <span id="showcaseTotalSuccess" class="text-3xl md:text-4xl font-black text-emerald-700">0</span>
                     </div>
                     <div class="bg-sky-50 p-4 rounded-2xl border border-sky-100 text-center">
-                        <span class="text-slate-500 text-sm font-bold block">平均評量星等</span>
-                        <span id="showcaseAvgStars" class="text-3xl md:text-4xl font-black text-sky-700">0.0 ★</span>
+                        <span class="text-slate-500 text-sm font-bold block">最高單場紀錄</span>
+                        <span id="showcaseHighScore" class="text-3xl md:text-4xl font-black text-sky-700">0 分</span>
                     </div>
                 </div>
 
@@ -569,7 +440,7 @@
                             <i class="fa-solid fa-clipboard-question"></i>
                         </div>
                         <h4 class="text-2xl font-bold text-slate-600">目前尚無成果展示</h4>
-                        <p class="text-slate-400 text-lg">請完成「活動二：因數接龍」並在「活動三：焦點反思」提交學習紀錄！</p>
+                        <p class="text-slate-400 text-lg">請在「活動二：因數接龍」完成 2 分鐘挑戰，系統將直接生成 ORID 反思並發布至成果牆！</p>
                     </div>
                 </div>
 
@@ -645,7 +516,7 @@
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-circle-check text-indigo-600 mt-1 shrink-0"></i>
-                            <span><strong>專注與抗壓：</strong>在限時 2 分鐘與最多 3 次失誤的高張力情境中，培養冷靜判斷與策略出牌能力，並透過 ORID 進行深刻數感反思。</span>
+                            <span><strong>自動化 ORID 數感反思：</strong>將 2 分鐘挑戰的客觀數據直接套用至 ORID 四層次思考架構，強化後設認知與解題策略遷移。</span>
                         </li>
                     </ul>
                 </div>
@@ -666,15 +537,11 @@
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-gamepad text-emerald-600 mt-1 shrink-0"></i>
-                            <span><strong>活動二：因數接龍：</strong>挑戰時限為 <strong>2 分鐘</strong>，目標數為 100 以內隨機數；打錯手牌累積 <strong>3 次失誤</strong> 即終止遊戲；全數解鎖可得大滿貫加分！</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-pen-to-square text-rose-600 mt-1 shrink-0"></i>
-                            <span><strong>活動三：焦點反思：</strong>完整輸入 ORID 四層面自我對話並完成三項評量星等，送出後作品將自動公開發布。</span>
+                            <span><strong>活動二：因數接龍：</strong>挑戰時限為 <strong>2 分鐘</strong>，目標數為 100 以內隨機數；打錯手牌累積 <strong>3 次失誤</strong> 即終止遊戲。</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <i class="fa-solid fa-award text-amber-600 mt-1 shrink-0"></i>
-                            <span><strong>活動四：成果展示牆：</strong>即時陳列個人對決戰績與 ORID 筆記，支援一鍵「匯出學習成果圖檔 (PNG)」以供留存！</span>
+                            <span><strong>成果展示牆：</strong>挑戰結束後自動生成個人 ORID 反思筆記並直接公開展示，支援一鍵「匯出學習成果圖檔 (PNG)」！</span>
                         </li>
                     </ul>
                 </div>
@@ -695,7 +562,7 @@
                         </div>
                         <div class="border-l-4 border-sky-500 pl-3">
                             <p class="font-bold text-sky-900">3. 歸納階段（ORID 後設認知收斂）</p>
-                            <p class="text-slate-600">「【I 詮釋】100 以內因數特別多的數字有什麼特性？【D 決定】下次挑戰時，你會採取什麼策略來維持優勢？」</p>
+                            <p class="text-slate-600">「系統為你生成的 ORID 反思筆記中，你發現自己在面對哪一類數字時出牌最順？下次挑戰你會採取什麼策略？」</p>
                         </div>
                     </div>
                 </div>
@@ -709,46 +576,101 @@
         </div>
     </div>
 
-    <!-- MODAL 3: GAME OVER MODAL -->
+    <!-- MODAL 3: GAME OVER & AUTO-ORID REFLECTION MODAL -->
     <div id="gameOverModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-6 card-shadow border-4 border-rose-500 text-center relative animate-bounce-once">
-            <div id="gameOverIconContainer" class="w-20 h-20 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-            </div>
-
-            <div class="space-y-2">
-                <span id="gameOverBadge" class="bg-rose-500 text-white font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider">
-                    挑戰終止
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-5 card-shadow border-4 border-indigo-500 text-center relative max-h-[92vh] overflow-y-auto">
+            
+            <div class="flex items-center justify-between border-b pb-3">
+                <div class="flex items-center space-x-3 text-left">
+                    <div id="gameOverIconContainer" class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </div>
+                    <div>
+                        <h3 id="gameOverTitle" class="text-2xl md:text-3xl font-black text-slate-800">挑戰結算與 ORID 數感反思</h3>
+                        <p id="gameOverDesc" class="text-slate-500 text-base">系統已將你的對決結果自動轉換為專屬學習反思筆記！</p>
+                    </div>
+                </div>
+                <span id="gameOverBadge" class="bg-indigo-600 text-white font-black text-sm px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                    2分鐘挑戰完成
                 </span>
-                <h3 id="gameOverTitle" class="text-3xl font-black text-slate-800">遊戲已結束！</h3>
-                <p id="gameOverDesc" class="text-slate-600 text-lg">
-                    已達終止條件，請檢視本次接龍成果。
-                </p>
             </div>
 
-            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 grid grid-cols-3 gap-2 text-center">
+            <!-- Score KPI Bar -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 grid grid-cols-3 gap-2 text-center">
                 <div>
                     <span class="text-xs text-slate-400 block font-bold">累積積分</span>
-                    <span id="gameOverScore" class="text-2xl font-black text-amber-500">0</span>
+                    <span id="gameOverScore" class="text-2xl md:text-3xl font-black text-amber-500">0</span>
                 </div>
                 <div>
                     <span class="text-xs text-slate-400 block font-bold">成功出牌</span>
-                    <span id="gameOverSuccess" class="text-2xl font-black text-emerald-600">0</span>
+                    <span id="gameOverSuccess" class="text-2xl md:text-3xl font-black text-emerald-600">0</span>
                 </div>
                 <div>
                     <span class="text-xs text-slate-400 block font-bold">累積失誤</span>
-                    <span id="gameOverMistakes" class="text-2xl font-black text-rose-500">0 / 3</span>
+                    <span id="gameOverMistakes" class="text-2xl md:text-3xl font-black text-rose-500">0 / 3</span>
                 </div>
             </div>
 
+            <!-- Auto-Generated ORID Reflection Preview -->
+            <div class="text-left space-y-3 pt-1">
+                <div class="flex items-center justify-between">
+                    <span class="text-lg font-black text-indigo-900 flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>
+                        <span>已自動產出 ORID 數感反思筆記：</span>
+                    </span>
+                    <span class="text-xs text-slate-500">（將直接公開發布於成果展示牆）</span>
+                </div>
+
+                <div class="space-y-2.5 text-base">
+                    <div class="bg-sky-50/80 p-3.5 rounded-2xl border border-sky-200">
+                        <span class="font-black text-sky-900 block text-sm flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-sky-600 text-white text-xs flex items-center justify-center font-black">O</span>
+                            【客觀事實】本次挑戰歷程數據
+                        </span>
+                        <p id="previewOridO" class="text-slate-700 mt-1 font-medium leading-relaxed"></p>
+                    </div>
+
+                    <div class="bg-rose-50/80 p-3.5 rounded-2xl border border-rose-200">
+                        <span class="font-black text-rose-900 block text-sm flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-rose-600 text-white text-xs flex items-center justify-center font-black">R</span>
+                            【感受體驗】限時倒數與心流感受
+                        </span>
+                        <p id="previewOridR" class="text-slate-700 mt-1 font-medium leading-relaxed"></p>
+                    </div>
+
+                    <div class="bg-amber-50/80 p-3.5 rounded-2xl border border-amber-200">
+                        <span class="font-black text-amber-900 block text-sm flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-amber-600 text-white text-xs flex items-center justify-center font-black">I</span>
+                            【數感詮釋】因數結構與合數觀察
+                        </span>
+                        <p id="previewOridI" class="text-slate-700 mt-1 font-medium leading-relaxed"></p>
+                    </div>
+
+                    <div class="bg-emerald-50/80 p-3.5 rounded-2xl border border-emerald-200">
+                        <span class="font-black text-emerald-900 block text-sm flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-black">D</span>
+                            【決定行動】下次對決之乘法配對策略
+                        </span>
+                        <p id="previewOridD" class="text-slate-700 mt-1 font-medium leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Name Confirmation -->
+            <div class="bg-indigo-50 p-3 rounded-2xl border border-indigo-200 flex items-center justify-between gap-3 text-left">
+                <span class="text-sm font-bold text-indigo-900 shrink-0">確認發布之班級座號：</span>
+                <input type="text" id="modalStudentNameConfirm" placeholder="例：501班08號" oninput="syncStudentName(this.value)" class="bg-white text-indigo-950 font-bold px-3 py-1.5 rounded-xl border border-indigo-300 focus:outline-none focus:border-indigo-600 w-full text-base">
+            </div>
+
+            <!-- Actions -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <button onclick="restartSolitaireGame(); closeModal('gameOverModal');" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-black text-xl py-4 rounded-2xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+                <button onclick="restartSolitaireGame(); closeModal('gameOverModal');" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xl py-4 rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-rotate-left"></i>
                     <span>再挑戰一次</span>
                 </button>
-                <button onclick="closeModal('gameOverModal'); switchTab('act3');" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl py-4 rounded-2xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
-                    <span>前往焦點反思</span>
-                    <i class="fa-solid fa-arrow-right"></i>
+                <button onclick="publishAutoOridToShowcase()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl py-4 rounded-2xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>發布成果至展示牆</span>
                 </button>
             </div>
         </div>
@@ -774,9 +696,9 @@
     </div>
 
     <script>
-        // GLOBAL APP STATE
+        // GLOBAL APPLICATION STATE
         const appState = {
-            version: "v1.8.0",
+            version: "v1.9.1",
             activeTab: "act1",
             consensusAgreed: false,
             
@@ -794,11 +716,13 @@
             targetFactors: [],
             playedFactors: [],
             handCards: [],
-            
-            ratings: { r1: 0, r2: 0, r3: 0 },
+            encounteredTargets: [], // tracks all target cards faced in this session
+
+            currentAutoOrid: null,
             records: []
         };
 
+        // TAB NAVIGATION LOGIC (Streamlined: act1, act2, act4)
         function switchTab(tabId) {
             appState.activeTab = tabId;
 
@@ -827,6 +751,7 @@
             }
         }
 
+        // FULLSCREEN CONTROLS
         function toggleFullScreen() {
             if (!document.fullscreenElement && !document.webkitFullscreenElement) {
                 const docEl = document.documentElement;
@@ -855,6 +780,7 @@
             if (icon) icon.className = document.webkitFullscreenElement ? "fa-solid fa-compress" : "fa-solid fa-expand";
         });
 
+        // MODAL HELPERS
         function openModal(id) {
             const el = document.getElementById(id);
             if (el) {
@@ -881,6 +807,7 @@
             }
         });
 
+        // QR CODE LOGIC
         function updateQrCodeImage() {
             const currentUrl = encodeURIComponent(window.location.href);
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${currentUrl}`;
@@ -926,11 +853,12 @@
         function syncStudentName(val) {
             appState.studentName = val;
             const a2 = document.getElementById('studentNameInput');
-            const a3 = document.getElementById('oridStudentNameInput');
+            const mConfirm = document.getElementById('modalStudentNameConfirm');
             if (a2 && a2.value !== val) a2.value = val;
-            if (a3 && a3.value !== val) a3.value = val;
+            if (mConfirm && mConfirm.value !== val) mConfirm.value = val;
         }
 
+        // MATH UTILITY: FACTORS
         function getFactors(n) {
             const factors = [];
             for (let i = 1; i <= n; i++) {
@@ -939,6 +867,7 @@
             return factors;
         }
 
+        // ACTIVITY 1: QUICK TESTER
         function testQuickFactors() {
             const inputEl = document.getElementById('testNumberInput');
             const inputVal = parseInt(inputEl.value);
@@ -984,12 +913,14 @@
             }
         }
 
+        // TARGET NUMBERS POOL (Rich composite numbers under 100)
         const TARGET_POOL = [
             12, 14, 15, 16, 18, 20, 21, 24, 25, 27, 28, 30, 32, 35, 36, 40,
             42, 44, 45, 48, 50, 52, 54, 56, 60, 63, 64, 66, 70, 72, 75, 76,
             80, 81, 84, 88, 90, 92, 96, 98, 99, 100
         ];
 
+        // ACTIVITY 2: GAME LOOP & SOLITAIRE ENGINE
         function startSolitaireGame() {
             if (appState.timerInterval) clearInterval(appState.timerInterval);
 
@@ -997,6 +928,7 @@
             appState.mistakes = 0;
             appState.isGameRunning = true;
             appState.isGameOver = false;
+            appState.encounteredTargets = [];
 
             updateTimerDisplay();
             updateMistakesUI();
@@ -1017,6 +949,7 @@
         function restartSolitaireGame() {
             appState.score = 0;
             appState.successCount = 0;
+            appState.encounteredTargets = [];
             document.getElementById('arenaScore').innerText = "0";
             document.getElementById('arenaSuccessCount').innerText = "0";
             addArenaMatchLog(`🔄 【重置】重新開始 2 分鐘因數接龍挑戰！`);
@@ -1047,6 +980,50 @@
             }
         }
 
+        // ORID AUTOMATIC SYNTHESIS ENGINE
+        function generateAutoOridData(reason) {
+            const score = appState.score;
+            const success = appState.successCount;
+            const mistakes = appState.mistakes;
+            const targets = appState.encounteredTargets.length > 0 
+                ? Array.from(new Set(appState.encounteredTargets)).join('、')
+                : (appState.currentTarget ? appState.currentTarget : '無');
+
+            // [O] 客觀事實 (Objective)
+            let objText = `在 2 分鐘的接龍挑戰中，我總共累計獲得 ${score} 分，成功打出 ${success} 張因數牌，遭遇了 ${mistakes} 次失誤。挑戰過之目標數包含【${targets}】。`;
+
+            // [R] 感受反應 (Reflective)
+            let refText = "";
+            if (mistakes === 0 && score >= 100) {
+                refText = "面對 120 秒倒數，我維持冷靜、高度專注，完全沒有出現任何失誤，每次大滿貫全解鎖時都感到非常振奮！";
+            } else if (reason === "mistakes") {
+                refText = "在最多只能失誤 3 次的極限條件下，心情十分緊張。當秒數流逝且失誤增加時，心跳加速，體會到時間壓力下維持理性心算的重要。";
+            } else if (score >= 120) {
+                refText = "接龍節奏緊湊流暢，每當快速從小到大辨認出所有因數時，獲得極大的自信心與成就感。";
+            } else {
+                refText = "時間一秒一秒倒數，面對較大的數字時一度猶豫。失誤時有些懊惱，但也激起了我想把乘法配對練得更熟的鬥志。";
+            }
+
+            // [I] 詮釋意義 (Interpretive)
+            let intText = "";
+            if (appState.encounteredTargets.some(t => [24, 36, 48, 60, 72].includes(t))) {
+                intText = "我發現 100 以內的合數（如 24、36、48、72）因數特別豐富，只要從小到大成對搜尋（如 1 與 N, 2 與 N/2），就能連續迅速得分，這展現了因數成對存在的數學規律。";
+            } else {
+                intText = "任何整數都一定包含「1」和「它本身」這對最基本因數；而掌握 2、3、5 的整除判別法，是在短時間內迅速鎖定有效手牌、避開干擾牌的關鍵。";
+            }
+
+            // [D] 做出決定 (Decisional)
+            let decText = "下次挑戰時，我會先鎖定 1 與本身先拿基本分，再依序用 2、3、4、5 進行乘法配對檢查，絕不慌亂出牌，爭取零失誤拿更高分！";
+
+            return {
+                O: objText,
+                R: refText,
+                I: intText,
+                D: decText
+            };
+        }
+
+        // GAME TERMINATION HANDLER
         function terminateGame(reason) {
             appState.isGameRunning = false;
             appState.isGameOver = true;
@@ -1066,27 +1043,71 @@
             document.getElementById('gameOverSuccess').innerText = appState.successCount;
             document.getElementById('gameOverMistakes').innerText = `${appState.mistakes} / 3`;
 
+            // Auto-generate ORID data
+            appState.currentAutoOrid = generateAutoOridData(reason);
+            document.getElementById('previewOridO').innerText = appState.currentAutoOrid.O;
+            document.getElementById('previewOridR').innerText = appState.currentAutoOrid.R;
+            document.getElementById('previewOridI').innerText = appState.currentAutoOrid.I;
+            document.getElementById('previewOridD').innerText = appState.currentAutoOrid.D;
+
+            // Sync current student name into confirm box
+            const nameInput = document.getElementById('studentNameInput');
+            const currentName = nameInput ? nameInput.value.trim() : appState.studentName;
+            const confirmNameInput = document.getElementById('modalStudentNameConfirm');
+            if (confirmNameInput) confirmNameInput.value = currentName || "";
+
             if (reason === "mistakes") {
-                iconContainer.className = "w-20 h-20 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner";
+                iconContainer.className = "w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner";
                 iconContainer.innerHTML = `<i class="fa-solid fa-heart-crack"></i>`;
-                badgeEl.className = "bg-rose-600 text-white font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider";
+                badgeEl.className = "bg-rose-600 text-white font-black text-xs px-3 py-1.5 rounded-full uppercase tracking-wider";
                 badgeEl.innerText = "失誤上限已滿";
-                titleEl.innerText = "選擇錯誤達 3 次！";
-                descEl.innerText = "手牌累積 3 次失誤，接龍挑戰立即終止。";
-                addArenaMatchLog(`⛔ 【挑戰終止】手牌選擇錯誤達 3 次！最終積分：${appState.score} 分`);
+                titleEl.innerText = "挑戰終止！已產出反思筆記";
+                descEl.innerText = "手牌累積 3 次失誤，系統已依本次表現生成 ORID 學習反思。";
+                addArenaMatchLog(`⛔ 【挑戰終止】累積 3 次失誤！最終積分：${appState.score} 分`);
             } else if (reason === "timeup") {
-                iconContainer.className = "w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner";
-                iconContainer.innerHTML = `<i class="fa-solid fa-clock"></i>`;
-                badgeEl.className = "bg-amber-600 text-white font-black text-sm px-4 py-1 rounded-full uppercase tracking-wider";
+                iconContainer.className = "w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner";
+                iconContainer.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                badgeEl.className = "bg-amber-600 text-white font-black text-xs px-3 py-1.5 rounded-full uppercase tracking-wider";
                 badgeEl.innerText = "2 分鐘時間到";
-                titleEl.innerText = "接龍時間結束！";
-                descEl.innerText = "挑戰時間已截止，請檢視個人得分並前往活動三進行焦點反思。";
-                addArenaMatchLog(`⏰ 【時間到】2 分鐘挑戰時間截止！最終積分：${appState.score} 分`);
+                titleEl.innerText = "時間到！已產出反思筆記";
+                descEl.innerText = "挑戰時間截止，系統已依本次表現自動生成專屬 ORID 反思筆記。";
+                addArenaMatchLog(`⏰ 【時間到】2 分鐘挑戰截止！最終積分：${appState.score} 分`);
             }
 
             if (appState.activeTab === 'act2') {
                 openModal('gameOverModal');
             }
+        }
+
+        function publishAutoOridToShowcase() {
+            const confirmNameInput = document.getElementById('modalStudentNameConfirm');
+            const finalName = confirmNameInput?.value.trim() || appState.studentName || "501班同學";
+            syncStudentName(finalName);
+
+            if (!appState.currentAutoOrid) {
+                appState.currentAutoOrid = generateAutoOridData("manual");
+            }
+
+            const record = {
+                id: Date.now(),
+                timestamp: new Date().toLocaleString('zh-TW'),
+                studentName: finalName,
+                score: appState.score,
+                successCount: appState.successCount,
+                mistakes: appState.mistakes,
+                orid: { ...appState.currentAutoOrid },
+                likes: 0
+            };
+
+            appState.records.unshift(record);
+
+            const countBadge = document.getElementById('showcaseCountBadge');
+            if (countBadge) countBadge.innerText = appState.records.length;
+
+            closeModal('gameOverModal');
+            showToast("個人成果與 ORID 反思已成功發布至展示牆！");
+            
+            switchTab('act4');
         }
 
         function drawNewTargetCard() {
@@ -1095,7 +1116,6 @@
                 return;
             }
 
-            // 確保不連續抽取完全相同的目標數，提升遊戲豐富性與節奏感
             let randTarget;
             do {
                 randTarget = TARGET_POOL[Math.floor(Math.random() * TARGET_POOL.length)];
@@ -1104,6 +1124,7 @@
             appState.currentTarget = randTarget;
             appState.targetFactors = getFactors(randTarget);
             appState.playedFactors = [];
+            appState.encounteredTargets.push(randTarget);
 
             const nextBtn = document.getElementById('btnNextTarget');
             if (nextBtn) nextBtn.classList.remove('pulse-border', 'ring-4', 'ring-amber-400');
@@ -1131,7 +1152,9 @@
             const factors = appState.targetFactors;
             const cardsSet = new Set(factors);
 
-            while (cardsSet.size < Math.min(14, Math.max(factors.length + 5, 8))) {
+            let loopSafety = 0;
+            const targetSize = Math.min(14, Math.max(factors.length + 5, 8));
+            while (cardsSet.size < targetSize && loopSafety++ < 300) {
                 const maxRange = target > 50 ? 100 : 50;
                 const distractor = Math.floor(Math.random() * maxRange) + 2;
                 if (target % distractor !== 0) {
@@ -1253,66 +1276,13 @@
             logBox.innerHTML = `<p>[${timeStr}] ${msg}</p>` + logBox.innerHTML;
         }
 
-        function setStarRating(category, starCount) {
-            appState.ratings[category] = starCount;
-            const buttons = document.querySelectorAll(`.star-${category}`);
-            buttons.forEach((btn, idx) => {
-                const icon = btn.querySelector('i');
-                if (icon) {
-                    if (idx < starCount) {
-                        icon.className = 'fa-solid fa-star text-amber-400';
-                    } else {
-                        icon.className = 'fa-solid fa-star text-slate-300 hover:text-amber-400';
-                    }
-                }
-            });
-        }
-
-        function saveOridReflection() {
-            const sName = document.getElementById('oridStudentNameInput')?.value.trim() ||
-                          document.getElementById('studentNameInput')?.value.trim() ||
-                          appState.studentName || "未填班級座號";
-            const inputO = document.getElementById('oridInputO').value.trim();
-            const inputR = document.getElementById('oridInputR').value.trim();
-            const inputI = document.getElementById('oridInputI').value.trim();
-            const inputD = document.getElementById('oridInputD').value.trim();
-
-            if (!inputO || !inputR || !inputI || !inputD) {
-                showToast("請完成 ORID 四個反思欄位的填寫！");
-                return;
-            }
-
-            const record = {
-                id: Date.now(),
-                timestamp: new Date().toLocaleString('zh-TW'),
-                studentName: sName,
-                score: appState.score,
-                successCount: appState.successCount,
-                mistakes: appState.mistakes,
-                orid: { O: inputO, R: inputR, I: inputI, D: inputD },
-                ratings: { ...appState.ratings },
-                likes: 0
-            };
-
-            appState.records.unshift(record);
-
-            document.getElementById('oridFormStatus').innerText = "已公開展示";
-            document.getElementById('oridFormStatus').className = "text-emerald-600 text-xl font-bold";
-
-            const countBadge = document.getElementById('showcaseCountBadge');
-            if (countBadge) countBadge.innerText = appState.records.length;
-
-            showToast("個人成果已成功送出！正在前往「成果展示牆」！");
-            
-            setTimeout(() => switchTab('act4'), 800);
-        }
-
+        // SHOWCASE WALL RENDERING
         function renderShowcase() {
             const container = document.getElementById('studentWorksContainer');
             const totalGroupsEl = document.getElementById('showcaseTotalGroups');
             const avgScoreEl = document.getElementById('showcaseAvgScore');
             const totalSuccessEl = document.getElementById('showcaseTotalSuccess');
-            const avgStarsEl = document.getElementById('showcaseAvgStars');
+            const highScoreEl = document.getElementById('showcaseHighScore');
             const countBadge = document.getElementById('showcaseCountBadge');
 
             const records = appState.records;
@@ -1322,14 +1292,14 @@
             if (records.length === 0) {
                 avgScoreEl.innerText = "0";
                 totalSuccessEl.innerText = "0";
-                avgStarsEl.innerText = "0.0 ★";
+                highScoreEl.innerText = "0 分";
                 container.innerHTML = `
                     <div class="col-span-full py-16 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-300 space-y-3">
                         <div class="w-16 h-16 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center text-3xl mx-auto">
                             <i class="fa-solid fa-clipboard-question"></i>
                         </div>
                         <h4 class="text-2xl font-bold text-slate-600">目前尚無成果展示</h4>
-                        <p class="text-slate-400 text-lg">請完成「活動二：因數接龍」並在「活動三：焦點反思」提交學習紀錄！</p>
+                        <p class="text-slate-400 text-lg">請在「活動二：因數接龍」完成 2 分鐘挑戰，系統將直接生成 ORID 反思並發布至成果牆！</p>
                     </div>
                 `;
                 return;
@@ -1338,14 +1308,13 @@
             const totalScore = records.reduce((sum, r) => sum + r.score, 0);
             const totalSuccess = records.reduce((sum, r) => sum + r.successCount, 0);
             const avgScore = Math.round(totalScore / records.length);
-            const avgRating = (records.reduce((sum, r) => sum + ((r.ratings.r1 + r.ratings.r2 + r.ratings.r3) / 3), 0) / records.length).toFixed(1);
+            const maxScore = Math.max(...records.map(r => r.score));
 
             avgScoreEl.innerText = avgScore;
             totalSuccessEl.innerText = totalSuccess;
-            avgStarsEl.innerText = `${avgRating} ★`;
+            highScoreEl.innerText = `${maxScore} 分`;
 
             container.innerHTML = records.map((r, idx) => {
-                const individualAvgStars = Math.round((r.ratings.r1 + r.ratings.r2 + r.ratings.r3) / 3) || 0;
                 return `
                     <div id="student-card-${idx}" class="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-6 border-2 border-indigo-100 card-shadow space-y-4 relative hover:border-indigo-300 transition-all">
                         <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -1373,27 +1342,28 @@
                                 <i class="fa-solid fa-heart-crack text-rose-500"></i>
                                 累積失誤：${r.mistakes} 次
                             </span>
-                            <span class="bg-amber-50 text-amber-800 px-3 py-1 rounded-xl border border-amber-200 flex items-center gap-1.5">
-                                <i class="fa-solid fa-star text-amber-500"></i>
-                                評量：${'★'.repeat(individualAvgStars)}${'☆'.repeat(5 - individualAvgStars)}
+                            <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-xl border border-indigo-200 flex items-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-indigo-600"></i>
+                                ORID 數感反思筆記
                             </span>
                         </div>
 
+                        <!-- ORID 4-Layer Reflection Display -->
                         <div class="space-y-2 text-base">
-                            <div class="bg-sky-50/60 p-3 rounded-xl border border-sky-100">
-                                <span class="font-bold text-sky-900 block text-sm">【O】打出的因數：</span>
+                            <div class="bg-sky-50/70 p-3 rounded-xl border border-sky-100">
+                                <span class="font-bold text-sky-900 block text-sm">【O 客觀事實】：</span>
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.O)}</p>
                             </div>
-                            <div class="bg-rose-50/60 p-3 rounded-xl border border-rose-100">
-                                <span class="font-bold text-rose-900 block text-sm">【R】2分鐘與失誤壓力下的感受：</span>
+                            <div class="bg-rose-50/70 p-3 rounded-xl border border-rose-100">
+                                <span class="font-bold text-rose-900 block text-sm">【R 感受反應】：</span>
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.R)}</p>
                             </div>
-                            <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-100">
-                                <span class="font-bold text-amber-900 block text-sm">【I】哪類數字因數多：</span>
+                            <div class="bg-amber-50/70 p-3 rounded-xl border border-amber-100">
+                                <span class="font-bold text-amber-900 block text-sm">【I 詮釋意義】：</span>
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.I)}</p>
                             </div>
-                            <div class="bg-emerald-50/60 p-3 rounded-xl border border-emerald-100">
-                                <span class="font-bold text-emerald-900 block text-sm">【D】下次採取的解題策略：</span>
+                            <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100">
+                                <span class="font-bold text-emerald-900 block text-sm">【D 做出決定】：</span>
                                 <p class="text-slate-700 mt-0.5">${escapeHtml(r.orid.D)}</p>
                             </div>
                         </div>
@@ -1403,9 +1373,9 @@
                                 <i class="fa-solid fa-heart text-lg"></i>
                                 <span id="likeText-${idx}">${r.likes} 讚</span>
                             </button>
-                            <button onclick="downloadCardAsImage(${idx})" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl shadow transition-all active:scale-95 flex items-center gap-1.5">
+                            <button onclick="downloadCardAsImage(${idx})" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow transition-all active:scale-95 flex items-center gap-1.5">
                                 <i class="fa-solid fa-download"></i>
-                                <span>下載成果圖檔</span>
+                                <span>下載個人成果圖 (PNG)</span>
                             </button>
                         </div>
                     </div>
@@ -1422,6 +1392,7 @@
             }
         }
 
+        // IMAGE EXPORT: SINGLE CARD PNG
         function downloadCardAsImage(idx) {
             const cardEl = document.getElementById(`student-card-${idx}`);
             if (!cardEl) return;
@@ -1431,7 +1402,12 @@
             showToast("正在產生個人成果圖檔，請稍候...");
 
             if (typeof html2canvas !== 'undefined') {
-                html2canvas(cardEl, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+                html2canvas(cardEl, { 
+                    scale: 2, 
+                    useCORS: true, 
+                    logging: false,
+                    backgroundColor: '#ffffff' 
+                }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = `因數大對決_個人學習成果_${name}.png`;
                     link.href = canvas.toDataURL('image/png');
@@ -1443,6 +1419,7 @@
             }
         }
 
+        // IMAGE EXPORT: FULL SHOWCASE WALL PNG
         function exportShowcaseImage() {
             if (appState.records.length === 0) {
                 showToast("目前尚無可匯出的成果！");
@@ -1453,7 +1430,12 @@
             showToast("正在產生全班成果圖檔，請稍候...");
 
             if (typeof html2canvas !== 'undefined' && container) {
-                html2canvas(container, { scale: 2, useCORS: true, backgroundColor: '#f8fafc' }).then(canvas => {
+                html2canvas(container, { 
+                    scale: 2, 
+                    useCORS: true, 
+                    logging: false,
+                    backgroundColor: '#f8fafc' 
+                }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = `因數大對決_全班成果展示_${new Date().toISOString().slice(0,10)}.png`;
                     link.href = canvas.toDataURL('image/png');
@@ -1465,48 +1447,88 @@
             }
         }
 
+        // CANVAS 2D FALLBACK IMAGE GENERATION WITH TEXT WRAPPING
         function fallbackImageGeneration(record) {
             if (!record) return;
             const canvas = document.createElement('canvas');
             canvas.width = 800;
-            canvas.height = 700;
+            canvas.height = 720;
             const ctx = canvas.getContext('2d');
 
             ctx.fillStyle = '#1e1b4b';
-            ctx.fillRect(0, 0, 800, 700);
+            ctx.fillRect(0, 0, 800, 720);
 
             ctx.fillStyle = '#ffffff';
-            // 兼容舊版 iPadOS / Safari 不支援 roundRect 之情境
             if (typeof ctx.roundRect === 'function') {
                 ctx.beginPath();
-                ctx.roundRect(20, 20, 760, 660, 24);
+                ctx.roundRect(20, 20, 760, 680, 24);
                 ctx.fill();
             } else {
-                ctx.fillRect(20, 20, 760, 660);
+                ctx.fillRect(20, 20, 760, 680);
             }
 
             ctx.fillStyle = '#312e81';
-            ctx.font = 'bold 32px sans-serif';
-            ctx.fillText(`因數大對決 ‧ 個人學習成果證書`, 50, 80);
+            ctx.font = 'bold 30px "Noto Sans TC", sans-serif';
+            ctx.fillText(`因數大對決 ‧ 個人學習成果與 ORID 反思`, 50, 75);
 
             ctx.fillStyle = '#475569';
-            ctx.font = '20px sans-serif';
-            ctx.fillText(`班級座號：${record.studentName}    時間：${record.timestamp}`, 50, 120);
+            ctx.font = '18px "Noto Sans TC", sans-serif';
+            ctx.fillText(`班級座號：${record.studentName}    時間：${record.timestamp}`, 50, 115);
 
             ctx.fillStyle = '#f59e0b';
-            ctx.font = 'bold 28px sans-serif';
-            ctx.fillText(`總得分：${record.score} 分  |  成功出牌：${record.successCount} 次  |  失誤：${record.mistakes} 次`, 50, 180);
+            ctx.font = 'bold 24px "Noto Sans TC", sans-serif';
+            ctx.fillText(`總得分：${record.score} 分  |  成功出牌：${record.successCount} 次  |  失誤：${record.mistakes} 次`, 50, 160);
 
-            ctx.fillStyle = '#0f172a';
-            ctx.font = 'bold 20px sans-serif';
-            ctx.fillText(`【O 客觀事實】${record.orid.O.slice(0, 35)}...`, 50, 250);
-            ctx.fillText(`【R 感受反應】${record.orid.R.slice(0, 35)}...`, 50, 320);
-            ctx.fillText(`【I 詮釋意義】${record.orid.I.slice(0, 35)}...`, 50, 390);
-            ctx.fillText(`【D 做出決定】${record.orid.D.slice(0, 35)}...`, 50, 460);
+            function drawWrappedText(context, text, x, y, maxWidth, lineHeight) {
+                const words = text.split('');
+                let line = '';
+                let currentY = y;
+                for (let n = 0; n < words.length; n++) {
+                    const testLine = line + words[n];
+                    const metrics = context.measureText(testLine);
+                    if (metrics.width > maxWidth && n > 0) {
+                        context.fillText(line, x, currentY);
+                        line = words[n];
+                        currentY += lineHeight;
+                    } else {
+                        line = testLine;
+                    }
+                }
+                context.fillText(line, x, currentY);
+                return currentY + lineHeight;
+            }
+
+            ctx.fillStyle = '#0369a1';
+            ctx.font = 'bold 18px "Noto Sans TC", sans-serif';
+            ctx.fillText(`【O 客觀事實】`, 50, 215);
+            ctx.fillStyle = '#334155';
+            ctx.font = '16px "Noto Sans TC", sans-serif';
+            drawWrappedText(ctx, record.orid.O, 50, 240, 700, 24);
+
+            ctx.fillStyle = '#be123c';
+            ctx.font = 'bold 18px "Noto Sans TC", sans-serif';
+            ctx.fillText(`【R 感受反應】`, 50, 320);
+            ctx.fillStyle = '#334155';
+            ctx.font = '16px "Noto Sans TC", sans-serif';
+            drawWrappedText(ctx, record.orid.R, 50, 345, 700, 24);
+
+            ctx.fillStyle = '#b45309';
+            ctx.font = 'bold 18px "Noto Sans TC", sans-serif';
+            ctx.fillText(`【I 詮釋意義】`, 50, 425);
+            ctx.fillStyle = '#334155';
+            ctx.font = '16px "Noto Sans TC", sans-serif';
+            drawWrappedText(ctx, record.orid.I, 50, 450, 700, 24);
+
+            ctx.fillStyle = '#047857';
+            ctx.font = 'bold 18px "Noto Sans TC", sans-serif';
+            ctx.fillText(`【D 做出決定】`, 50, 530);
+            ctx.fillStyle = '#334155';
+            ctx.font = '16px "Noto Sans TC", sans-serif';
+            drawWrappedText(ctx, record.orid.D, 50, 555, 700, 24);
 
             ctx.fillStyle = '#94a3b8';
-            ctx.font = '16px sans-serif';
-            ctx.fillText(`數感實驗室  | 互動學習系統 | Design：S.C. Kuo`, 50, 620);
+            ctx.font = '16px "Noto Sans TC", sans-serif';
+            ctx.fillText(`數感實驗室  | 互動學習系統 | Design：S.C. Kuo`, 50, 675);
 
             const link = document.createElement('a');
             link.download = `因數大對決_個人學習成果_${record.studentName}.png`;
@@ -1525,8 +1547,6 @@
 
         function executeClearShowcase() {
             appState.records = [];
-            document.getElementById('oridFormStatus').innerText = "尚未送出";
-            document.getElementById('oridFormStatus').className = "text-amber-600 text-xl font-bold";
             closeModal('clearConfirmModal');
             renderShowcase();
             showToast("成果展示牆已清空重置！");
@@ -1542,6 +1562,7 @@
                 .replace(/'/g, "&#039;");
         }
 
+        // INITIALIZATION
         window.onload = function() {
             updateQrCodeImage();
         };
